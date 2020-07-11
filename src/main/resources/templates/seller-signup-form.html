@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Seller SignUp Form</title>
+</head>
+
+<body>
+
+	<div th:insert="navbar"></div>
+	
+	<div class="container">
+		<h3>Seller SignUp Form</h3>
+		<hr>
+		
+		<form 
+			action="#" 
+			th:action="@{/seller/save}" 
+			th:object="${theSeller}" 
+			method="POST">
+			
+			<input 
+				type="text" 
+				th:field="*{sellerName}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Name" />
+				
+			<input 
+				type="text" 
+				th:field="*{sellerAddress}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Address" />
+				
+			<input 
+				type="text" 
+				th:field="*{sellerEmail}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Email" />
+				
+			<input 
+				type="password" 
+				th:field="*{sellerPassword}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Password" />
+				
+			<input 
+				type="number" 
+				th:field="*{sellerGST}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller GST" />
+				
+			<input 
+				type="text" 
+				th:field="*{sellerContact}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Contact" />
+				
+			<input 
+				type="text" 
+				th:field="*{sellerCompany}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Company" />
+				
+			<input 
+				type="text" 
+				th:field="*{sellerCompanyDesc}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Company Description" />
+				
+			<input 
+				type="text" 
+				th:field="*{sellerWebsite}" 
+				class="form-control mb-4 col-4" 
+				placeholder="Seller Website" />
+				
+			<button type="submit" class="btn btn-info col-2">SignUp</button>
+			
+		</form>
+		
+		<hr>
+		
+	</div>
+</body>
+
+</html>

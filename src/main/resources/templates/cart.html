@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Product List</title>
+</head>
+
+<body>
+
+	<div th:insert="navbar"></div>
+	
+	<div class="container">
+		<h1>Buyer's Cart Products</h1>
+		<hr>
+		
+		<input type="button" onclick="history.go(-1)"
+			class="btn btn-primary btn-sm mb-3" value="Add Products From Stock" />
+		
+		<a th:if="${!theCart.products.isEmpty()}" th:href="@{/order}"
+			class="btn btn-primary btn-sm mb-3">
+			Order Now
+		</a>
+		
+		<table th:if="${!theCart.products.isEmpty()}" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Description</th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="temp : ${theCart.products}">	
+					<td th:text="${temp.productName}" />
+					<td th:text="${temp.productPrice}" />
+					<td th:text="${temp.productDesc}" />
+					<td><a th:href="@{'/cart/delete/'+${temp.productId}}">Delete From Cart</a></td>
+				</tr>
+			</tbody>		
+		</table>
+		
+		<div th:if="${theCart.products.isEmpty()}">
+			<h3>Sorry... Cart Empty</h3>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+
+

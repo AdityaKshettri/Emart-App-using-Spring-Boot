@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+
+	  <div class="container">
+	  
+	    <a class="navbar-brand">Emart App</a>
+	    <button class="navbar-toggler" type="button">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    
+	    <div class="collapse navbar-collapse" id="navbarMain">
+	    
+	      <ul class="navbar-nav mr-auto">
+	      	<li class="nav-item">
+	          <a th:if="${isBuyer}" th:href="@{/seller/list}" class="nav-link">List of Sellers</a>
+	        </li>
+	        <li class="nav-item">
+	          <a th:if="${isSeller}" th:href="@{/stock/list}" class="nav-link">Stocks</a>
+	        </li>
+	        <li class="nav-item">
+	          <a th:if="${isBuyer}" th:href="@{/cart}" class="nav-link">My Cart</a>
+	        </li>
+	        <li class="nav-item">
+	          <a th:if="${isBuyer}" th:href="@{/order/list}" class="nav-link">My Orders</a>
+	        </li>
+	      </ul>
+	      
+	      <ul class="navbar-nav ml-auto">
+	      	<li class="nav-item">
+		       <a th:if="${!isBuyer && !isSeller}" class="nav-link" th:href="@{/buyer/signup}">SignUp As Buyer</a>
+		    </li>
+		    <li class="nav-item"> 
+		       <a th:if="${!isBuyer && !isSeller}" class="nav-link" th:href="@{/seller/signup}">SignUp As Seller</a>
+		    </li>
+	      	<li class="nav-item">
+	          <a th:if="${!isBuyer && !isSeller}" th:href="@{/user/login}" class="nav-link">Login</a>
+	        </li>
+	        
+	        <li class="nav-item">
+	          <a th:if="${isSeller || isBuyer}" th:href="@{/user/logout}" class="nav-link">Logout</a>
+	        </li>
+	      </ul>
+	      
+	    </div>
+	  </div>
+	</nav>

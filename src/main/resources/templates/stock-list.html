@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Stock List</title>
+</head>
+
+<body>
+
+	<div th:insert="navbar"></div>
+	
+	<div class="container">
+		<h1>Stock List</h1>
+		<hr>
+		
+		<a th:if="${isSeller}" th:href="@{/product/add}"
+			class="btn btn-primary btn-sm mb-3">
+			Add New Product Stock
+		</a>
+		
+		<table th:if="${!stocks.isEmpty()}" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Stock Product</th>
+					<th>Stock Product Price</th>
+					<th>Stock Product Quantity</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="temp : ${stocks}">	
+					<td th:text="${temp.product.productName}" />
+					<td th:text="${temp.product.productPrice}" />
+					<td th:text="${temp.stockQuantity}" />
+					<div th:if="${isBuyer}">
+						<td th:text="${temp.product.productDesc}" />
+						<td><a th:href="@{'/cart/add/'+${temp.product.productId}}">Add To Cart</a></td>
+					</div>
+					<div th:if="${isSeller}">
+						<td><a th:href="@{'/stock/edit/'+${temp.stockId}}">Update</a></td>
+						<td><a th:href="@{'/stock/delete/'+${temp.stockId}}">Delete</a></td>
+					</div>
+				</tr>
+			</tbody>		
+		</table>
+		
+		<div th:if="${stocks.isEmpty()}">
+			<h3>Sorry... No Stocks available yet...</h3>
+			<br>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+
+
